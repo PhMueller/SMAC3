@@ -183,8 +183,9 @@ class AbstractInitialDesign:
         configs = []
         for vector in design:
             try:
+                config_from_vec = CS.Configuration(configspace, vector=vector)
                 conf = deactivate_inactive_hyperparameters(
-                    configuration=None, configuration_space=configspace, vector=vector
+                    configuration=config_from_vec, configuration_space=configspace, vector=None
                 )
             except ForbiddenValueError:
                 continue
